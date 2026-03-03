@@ -1,0 +1,104 @@
+﻿@model X.PagedList.IPagedList<RapidApi_CryptoFinanceDashboardProject.Models.CoinListItem>
+@{
+    ViewData["Title"] = "Kripto Panel";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+    <div class="mx-auto max-w-7xl space-y-8">
+        @await Component.InvokeAsync("_DashboardTrendingCoingListComponentPartial")
+        <div class="space-y-4">
+            <div class="flex items-center justify-between px-1">
+                <h2 class="text-lg font-bold text-slate-900">Piyasaya Genel Bakış</h2>
+                <div class="flex bg-slate-100 p-1 rounded-xl border border-slate-200">
+                    <button class="rounded-lg px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-slate-900 transition-all">1S</button>
+                    <button class="rounded-lg bg-white px-4 py-1.5 text-xs font-bold text-primary shadow-sm">24S</button>
+                    <button class="rounded-lg px-4 py-1.5 text-xs font-bold text-slate-500 hover:text-slate-900 transition-all">7G</button>
+                </div>
+            </div>
+            <div class="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-soft">
+                <div class="overflow-x-auto">
+                    <table class="w-full min-w-[800px] text-left border-collapse">
+                        <thead class="bg-slate-50/80 border-b border-slate-100">
+                            <tr>
+                                <th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-text-muted">Sıra</th>
+                                <th class="px-6 py-4 text-xs font-bold uppercase tracking-widest text-text-muted">Varlık Adı</th>
+                                <th class="px-6 py-4 text-right text-xs font-bold uppercase tracking-widest text-text-muted">Fiyat</th>
+                                <th class="px-6 py-4 text-right text-xs font-bold uppercase tracking-widest text-text-muted">24s Değişim</th>
+                                <th class="px-6 py-4 text-right text-xs font-bold uppercase tracking-widest text-text-muted">Piyasa Değeri</th>
+                                <th class="px-6 py-4 text-right text-xs font-bold uppercase tracking-widest text-text-muted">Son 7 Gün</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-50">
+                            @foreach (var item in Model)
+                            {
+                                count++;
+                                decimal price = decimal.Parse(item.Price ?? "0", System.Globalization.CultureInfo.InvariantCulture);
+                                string formattedPrice = price < 1
+                                ? price.ToString("#,##0.00######", new System.Globalization.CultureInfo("en-US"))
+                                : price.ToString("#,##0.00", new System.Globalization.CultureInfo("en-US"));
+
+                                double change = double.Parse(item.Change ?? "0", System.Globalization.CultureInfo.InvariantCulture);
+                                string formattedChange = change.ToString("0.00", new System.Globalization.CultureInfo("en-US"));
+
+                                decimal marketCap = decimal.Parse(item.MarketCap ?? "0", System.Globalization.CultureInfo.InvariantCulture);
+                                string formattedMarketCap = (marketCap / 1000000000m).ToString("#,##0.00", new System.Globalization.CultureInfo("en-US")) + "B";
+
+                                <tr class="group hover:bg-slate-50 transition-colors">
+                                    <td class="px-6 py-5 text-sm font-bold text-slate-400">@count.ToString("00")</td>
+                                    <td class="px-6 py-5">
+                                        <div class="flex items-center gap-3">
+                                            <img alt="@item.Name" class="h-9 w-9 rounded-full shadow-sm" src="@item.IconUrl" />
+                                            <div>
+                                                <p class="font-bold text-slate-900">@item.Name</p>
+                                                <p class="text-xs font-medium text-text-muted uppercase">@item.Symbol</p>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-5 text-right font-bold text-slate-900">$@formattedPrice</td>
+                                    <td class="px-6 py-5 text-right text-sm font-bold @(change >= 0 ? "text-accent-success" : "text-accent-danger")">
+                                        @(change >= 0 ? "+" : "")@formattedChange%
+                                    </td>
+                                    <td class="px-6 py-5 text-right text-sm font-medium text-slate-600">
+                                        $@formattedMarketCap
+                                    </td>
+                                    <td class="px-6 py-5 text-right">
+                                        <div class="ml-auto h-8 w-24">
+                                            @if (change >= 0)
+                                            {
+                                                <svg class="h-full w-full text-accent-success" fill="none" preserveAspectRatio="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 100 40">
+                                                    <path d="M0 35 C 20 35, 20 10, 40 20 C 60 30, 60 5, 80 15 L 100 5" vector-effect="non-scaling-stroke"></path>
+                                                </svg>
+                                            }
+                                            else
+                                            {
+                                                <svg class="h-full w-full text-accent-danger" fill="none" preserveAspectRatio="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 100 40">
+                                                    <path d="M0 5 C 20 5, 20 30, 40 20 C 60 10, 60 35, 80 25 L 100 35" vector-effect="non-scaling-stroke"></path>
+                                                </svg>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="flex items-center justify-between border-t border-slate-100 px-8 py-5 bg-slate-50/50">
+                    <p class="text-sm font-medium text-text-muted">
+                        Toplam <span class="text-slate-900">@Model.Count()</span> varlık içinden <span class="text-slate-900">1-@Model.Count()</span> arası gösteriliyor
+                    </p>
+                    <div class="flex gap-3">
+                        <a href="@Url.Action("Index", new { page = Model.PageNumber - 1 })" class="px-3 py-1 border rounded @(Model.HasPreviousPage ? "bg-white text-black" : "bg-gray-200 text-gray-500 pointer-events-none")">
+                            Önceki
+                        </a>
+                        <a href="@Url.Action("Index", new { page = Model.PageNumber + 1 })" class="px-3 py-1 border rounded @(Model.HasNextPage ? "bg-white text-black" : "bg-gray-200 text-gray-500 pointer-events-none")">
+                            Sonraki
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

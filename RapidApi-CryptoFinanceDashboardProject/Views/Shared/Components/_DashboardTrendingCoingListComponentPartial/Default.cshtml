@@ -1,0 +1,42 @@
+@model List<TrendingCoin>
+<div class="space-y-4">
+    <div class="flex items-center justify-between px-1">
+        <h2 class="text-lg font-bold text-slate-900">Trend Coinler</h2>
+        <a class="text-sm font-semibold text-primary hover:text-primary/80 flex items-center gap-1" href="#">
+            Piyasayı Gör
+            <span class="material-symbols-outlined text-sm">arrow_forward</span>
+        </a>
+    </div>
+    <div class="flex gap-6 overflow-x-auto pb-4 snap-x [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        @foreach (var item in Model.Take(4))
+        {
+            decimal price = decimal.Parse(item.price ?? "0", System.Globalization.CultureInfo.InvariantCulture);
+            string formattedPrice = price < 1
+            ? price.ToString("#,##0.00######", new System.Globalization.CultureInfo("en-US"))
+            : price.ToString("#,##0.00", new System.Globalization.CultureInfo("en-US"));
+
+            double change = double.Parse(item.change ?? "0", System.Globalization.CultureInfo.InvariantCulture);
+            string formattedChange = change.ToString("0.00", new System.Globalization.CultureInfo("en-US"));
+
+            <div class="min-w-[260px] flex-1 rounded-3xl bg-white p-5 shadow-soft border border-slate-100 hover:border-primary/20 transition-all cursor-pointer snap-start">
+                <div class="flex items-center justify-between mb-5">
+                    <div class="flex items-center gap-3">
+                        <img src="@item.iconUrl" class="h-11 w-11 rounded-2xl bg-slate-100 shadow-inner p-1" alt="@item.name" />
+                        <div>
+                            <p class="font-bold text-slate-900">@item.name</p>
+                            <p class="text-xs font-medium text-text-muted">@item.symbol</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-end justify-between">
+                    <p class="text-xl font-extrabold text-slate-900 tracking-tight">$@formattedPrice</p>
+                    <div class="inline-flex items-center justify-center min-h-6 px-2 rounded-lg border @(change >= 0 ? "bg-green-50 border-green-100" : "bg-red-50 border-red-100")">
+                        <span class="text-sm font-bold @(change >= 0 ? "text-accent-success" : "text-accent-danger")">
+                            @(change >= 0 ? "+" : "")@formattedChange%
+                        </span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
