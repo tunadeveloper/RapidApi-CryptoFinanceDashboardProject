@@ -1,0 +1,40 @@
+<aside class="flex w-64 flex-col border-r border-slate-200 bg-white shadow-sm z-20">
+    <div class="flex h-16 items-center gap-3 px-6 border-b border-slate-100">
+        <div class="flex items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary p-2 text-white">
+            <span class="material-symbols-outlined text-2xl">currency_bitcoin</span>
+        </div>
+        <a href="@Url.Action("Index", "Dashboard")" class="text-xl font-bold tracking-tight text-slate-900">CryptoHub</a>
+    </div>
+    <nav class="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-6">
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "Dashboard" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "Dashboard")">
+            <span class="material-symbols-outlined group-hover:text-secondary">dashboard</span>
+            <span class="text-sm font-medium">Dashboard</span>
+        </a>
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "CryptoArticle" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "CryptoArticle")">
+            <span class="material-symbols-outlined group-hover:text-secondary">newspaper</span>
+            <span class="text-sm font-medium">Kripto Haberler</span>
+        </a>
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "ListingsDelistings" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "ListingsDelistings")">
+            <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
+            <span class="text-sm font-medium">Liste Giriş / Çıkışlar</span>
+        </a>
+        <div class="my-4 border-t border-slate-100"></div>
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
+            <span class="material-symbols-outlined group-hover:text-secondary">account_balance_wallet</span>
+            <span class="text-sm font-medium">Portfolio</span>
+        </a>
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
+            <span class="material-symbols-outlined group-hover:text-secondary">settings</span>
+            <span class="text-sm font-medium">Settings</span>
+        </a>
+    </nav>
+    <div class="p-4 border-t border-slate-100">
+        <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-3 border border-slate-100">
+            <div class="h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-sm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkvBLVLOCfzzsgT8YIYnMSZpFqEIMsza365dJg0ds49wQ49wZJljOkIQyHZnVpxeG7rbkvPg5yJ0kolCPQNni7IhYkHcRxGfw_RkFTTv8zAube4KeyJFmPe_qpQ67Q4WzKiFv7N4s7fnWughsxK5AKX3v4GRGCbaTeX-NzO4MmmSbysNGmkap2q7XJpYz4IR3b3XqqTst4TDubKcHtTMDh94zcqe8X403FlPysisF3HnFk8cPyepy7MQXum9gCAuz_oVPnKZ1ocAg'); background-size: cover; background-position: center;"></div>
+            <div class="flex flex-col overflow-hidden">
+                <span class="truncate text-sm font-bold text-slate-900">Alex Morgan</span>
+                <span class="truncate text-xs font-medium text-primary">Pro Plan</span>
+            </div>
+        </div>
+    </div>
+</aside>

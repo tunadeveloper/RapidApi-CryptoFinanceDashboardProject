@@ -2,12 +2,12 @@ namespace RapidApi_CryptoFinanceDashboardProject.Models
 {
     public class ListingDelistingItem
     {
-        public string Title { get; set; }
-        public string Source { get; set; }
-        public string Symbol { get; set; }
-        public string Content { get; set; }
-        public string Category { get; set; }
-        public DateTime Date { get; set; }
-        public DateTime PublishedDate { get; set; }
+        public string title { get; set; }
+        public string source { get; set; }
+        public string symbol { get; set; }
+        public string content { get; set; }
+        public string category { get; set; }
+        public DateTime date { get; set; }
+        public DateTime published_date { get; set; }
     }
 }

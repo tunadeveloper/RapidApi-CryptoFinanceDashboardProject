@@ -1,130 +1,15 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Crypto Global Market Dashboard - Light Mode</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        "primary": "#4f46e5", // Vibrant Indigo/Purple
-                        "secondary": "#0ea5e9", // Vibrant Blue
-                        "background": "#f8fafc", // Soft off-white
-                        "surface": "#ffffff",
-                        "text-main": "#0f172a", // High contrast slate
-                        "text-muted": "#64748b",
-                        "accent-success": "#059669", // Higher contrast green
-                        "accent-danger": "#dc2626", // Higher contrast red
-                    },
-                    fontFamily: {
-                        "display": ["Inter", "sans-serif"]
-                    },
-                    borderRadius: {
-                        "DEFAULT": "0.375rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "2xl": "1rem",
-                        "3xl": "1.5rem",
-                    },
-                    boxShadow: {
-                        "soft": "0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
-                    }
-                },
-            },
-        }
-    </script>
-    <style type="text/tailwindcss">
-        ::-webkit-scrollbar {
-                    width: 6px;
-                    height: 6px;
-                }
-                ::-webkit-scrollbar-track {
-                    background: #f1f5f9;
-                }
-                ::-webkit-scrollbar-thumb {
-                    background: #cbd5e1;
-                    border-radius: 10px;
-                }
-                ::-webkit-scrollbar-thumb:hover {
-                    background: #94a3b8;
-                }
-                .stat-card-gradient {
-                    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
-                }
-    </style>
+    @await Html.PartialAsync("_LayoutHeadPartial")
 </head>
 <body class="bg-background font-display text-text-main antialiased overflow-hidden">
     <div class="flex h-screen w-full">
-        <aside class="flex w-64 flex-col border-r border-slate-200 bg-white shadow-sm z-20">
-            <div class="flex h-16 items-center gap-3 px-6 border-b border-slate-100">
-                <div class="flex items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary p-2 text-white">
-                    <span class="material-symbols-outlined text-2xl">currency_bitcoin</span>
-                </div>
-                <h1 class="text-xl font-bold tracking-tight text-slate-900">CryptoHub</h1>
-            </div>
-            <nav class="flex flex-1 flex-col gap-1 overflow-y-auto px-4 py-6">
-                <a class="flex items-center gap-3 rounded-xl bg-primary/5 px-4 py-3 text-primary transition-all font-semibold" href="#">
-                    <span class="material-symbols-outlined">dashboard</span>
-                    <span class="text-sm">Dashboard</span>
-                </a>
-                <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
-                    <span class="material-symbols-outlined group-hover:text-secondary">candlestick_chart</span>
-                    <span class="text-sm font-medium">Markets</span>
-                </a>
-                <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
-                    <span class="material-symbols-outlined group-hover:text-secondary">trending_up</span>
-                    <span class="text-sm font-medium">Trending</span>
-                </a>
-                <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
-                    <span class="material-symbols-outlined group-hover:text-secondary">star</span>
-                    <span class="text-sm font-medium">Favorites</span>
-                </a>
-                <div class="my-4 border-t border-slate-100"></div>
-                <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
-                    <span class="material-symbols-outlined group-hover:text-secondary">account_balance_wallet</span>
-                    <span class="text-sm font-medium">Portfolio</span>
-                </a>
-                <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
-                    <span class="material-symbols-outlined group-hover:text-secondary">settings</span>
-                    <span class="text-sm font-medium">Settings</span>
-                </a>
-            </nav>
-            <div class="p-4 border-t border-slate-100">
-                <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-3 border border-slate-100">
-                    <div class="h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-sm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkvBLVLOCfzzsgT8YIYnMSZpFqEIMsza365dJg0ds49wQ49wZJljOkIQyHZnVpxeG7rbkvPg5yJ0kolCPQNni7IhYkHcRxGfw_RkFTTv8zAube4KeyJFmPe_qpQ67Q4WzKiFv7N4s7fnWughsxK5AKX3v4GRGCbaTeX-NzO4MmmSbysNGmkap2q7XJpYz4IR3b3XqqTst4TDubKcHtTMDh94zcqe8X403FlPysisF3HnFk8cPyepy7MQXum9gCAuz_oVPnKZ1ocAg'); background-size: cover; background-position: center;"></div>
-                    <div class="flex flex-col overflow-hidden">
-                        <span class="truncate text-sm font-bold text-slate-900">Alex Morgan</span>
-                        <span class="truncate text-xs font-medium text-primary">Pro Plan</span>
-                    </div>
-                </div>
-            </div>
-        </aside>
+        @await Html.PartialAsync("_LayoutAsidePartial")
         <main class="flex flex-1 flex-col overflow-hidden">
-            <header class="flex h-16 items-center justify-between gap-4 border-b border-slate-200 px-8 bg-white/80 backdrop-blur-md z-10">
-                <div class="flex flex-1 items-center gap-4">
-                    <div class="relative w-full max-w-md">
-                        <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
-                        <input class="h-10 w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-4 text-sm text-slate-900 placeholder-slate-400 focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all outline-none" placeholder="Search assets..." type="text" />
-                    </div>
-                </div>
-                <div class="flex items-center gap-4">
-                    <button class="flex h-10 w-10 items-center justify-center rounded-xl text-slate-500 hover:bg-slate-100 hover:text-primary transition-all relative border border-slate-100">
-                        <span class="material-symbols-outlined">notifications</span>
-                        <span class="absolute top-2.5 right-2.5 h-2 w-2 rounded-full bg-accent-danger border-2 border-white"></span>
-                    </button>
-                    <button class="flex h-10 w-10 items-center justify-center rounded-xl text-slate-500 hover:bg-slate-100 transition-all border border-slate-100">
-                        <span class="material-symbols-outlined">help_outline</span>
-                    </button>
-                </div>
-            </header>
+            @await Html.PartialAsync("_LayoutHeaderPartial")
             @RenderBody()
         </main>
     </div>
-
 </body>
 </html>

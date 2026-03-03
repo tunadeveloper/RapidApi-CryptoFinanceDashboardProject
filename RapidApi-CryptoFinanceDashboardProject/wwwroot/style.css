@@ -1,0 +1,18 @@
+/* Custom styles - moved from _Layout.cshtml */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+.stat-card-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, #f0f9ff 100%);
+}

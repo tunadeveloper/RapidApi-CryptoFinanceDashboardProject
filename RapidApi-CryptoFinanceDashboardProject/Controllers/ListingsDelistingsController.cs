@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RapidApi_CryptoFinanceDashboardProject.Models;
 using System.Threading.Tasks;
+using X.PagedList.Extensions;
 
 namespace RapidApi_CryptoFinanceDashboardProject.Controllers
 {
@@ -16,6 +17,8 @@ namespace RapidApi_CryptoFinanceDashboardProject.Controllers
 
         public async Task<IActionResult> Index(int? page)
         {
+            int pageSize = 9;
+            int pageNumber = page ?? 1;
             var client = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage
             {
@@ -32,7 +35,8 @@ namespace RapidApi_CryptoFinanceDashboardProject.Controllers
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ListingDelistingItem>>(body);
-                return View(values);
+                var paged = values?.ToPagedList(pageNumber, pageSize);
+                return View(paged);
             }
         }
     }

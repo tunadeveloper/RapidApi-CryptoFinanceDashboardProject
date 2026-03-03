@@ -1,0 +1,38 @@
+<meta charset="utf-8" />
+<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+<title>@(ViewData["Title"] ?? "Crypto Global Market Dashboard") - Light Mode</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+<link href="@Url.Content("~/style.css")" rel="stylesheet" />
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+        theme: {
+            extend: {
+                colors: {
+                    "primary": "#4f46e5",
+                    "secondary": "#0ea5e9",
+                    "background": "#f8fafc",
+                    "surface": "#ffffff",
+                    "text-main": "#0f172a",
+                    "text-muted": "#64748b",
+                    "accent-success": "#059669",
+                    "accent-danger": "#dc2626",
+                },
+                fontFamily: {
+                    "display": ["Inter", "sans-serif"]
+                },
+                borderRadius: {
+                    "DEFAULT": "0.375rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "2xl": "1rem",
+                    "3xl": "1.5rem",
+                },
+                boxShadow: {
+                    "soft": "0 2px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
+                }
+            },
+        },
+    }
+</script>
