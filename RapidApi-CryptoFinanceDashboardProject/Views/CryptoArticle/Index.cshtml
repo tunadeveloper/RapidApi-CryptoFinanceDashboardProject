@@ -1,0 +1,44 @@
+﻿@model List<RapidApi_CryptoFinanceDashboardProject.Models.CryptoArticle>
+@{
+    ViewData["Title"] = "Kripto Haberler";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    int count = 0;
+}
+
+<div class="flex-1 overflow-y-auto p-8 space-y-8">
+    <div class="mx-auto max-w-7xl space-y-8">
+
+        <div class="space-y-4">
+            <div class="flex items-center justify-between px-1">
+                <h2 class="text-lg font-bold text-slate-900">Kripto Haberler</h2>
+                <a class="text-sm font-semibold text-primary hover:text-primary/80 flex items-center gap-1" href="#">
+                    Tümünü Gör
+                    <span class="material-symbols-outlined text-sm">arrow_forward</span>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                @foreach (var item in Model)
+                {
+                    count++;
+                    <div class="rounded-3xl bg-white p-5 shadow-soft border border-slate-100 hover:border-primary/20 transition-all cursor-pointer">
+                        <img src="@(item.Media != null && item.Media.Count > 0 ? item.Media[0] : "https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/4087184/cover_image/regular_1708x683/Untitled-c7f4c86ddb44556b00a31a37e4219c3d.png")" class="w-full h-40 object-cover rounded-xl mb-4" alt="@item.Title" />
+                        <p class="text-xs font-medium text-text-muted">@item.Published.ToLocalTime().ToString("dd MMM yyyy HH:mm")</p>
+                        <a href="@item.Link" target="_blank" class="block mt-2">
+                            <p class="font-bold text-slate-900">@item.Title</p>
+                        </a>
+                        <p class="text-sm text-slate-600 mt-2 line-clamp-3">@item.Summary</p>
+                        <div class="mt-3 flex items-center justify-between">
+                            <p class="text-xs font-medium text-text-muted">@string.Join(", ", item.Authors?.ConvertAll(a => a.Name) ?? new List<string>())</p>
+                            <span class="px-2 py-1 rounded text-xs font-bold @(item.Sentiment.Label == "positive" ? "bg-green-100 text-green-800" :
+                                                                                                       item.Sentiment.Label == "negative" ? "bg-red-100 text-red-800" :
+                                                                                                       "bg-gray-100 text-gray-800")">
+                                @item.Sentiment.Label
+                            </span>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
