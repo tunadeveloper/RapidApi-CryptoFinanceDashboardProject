@@ -18,14 +18,17 @@
             <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
             <span class="text-sm font-medium">Liste Giriş / Çıkışlar</span>
         </a>
-        <div class="my-4 border-t border-slate-100"></div>
-        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
-            <span class="material-symbols-outlined group-hover:text-secondary">account_balance_wallet</span>
-            <span class="text-sm font-medium">Portfolio</span>
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "Indicator" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "Indicator")">
+            <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
+            <span class="text-sm font-medium">RSI İndikatör</span>
         </a>
-        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all" href="#">
-            <span class="material-symbols-outlined group-hover:text-secondary">settings</span>
-            <span class="text-sm font-medium">Settings</span>
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "Currency" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "Currency")">
+            <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
+            <span class="text-sm font-medium">Döviz Kurları</span>
+        </a>
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "Gas" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "Gas")">
+            <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
+            <span class="text-sm font-medium">Akaryakıt</span>
         </a>
     </nav>
     <div class="p-4 border-t border-slate-100">

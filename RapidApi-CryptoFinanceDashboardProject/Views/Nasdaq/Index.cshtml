@@ -1,0 +1,39 @@
+﻿@model RapidApi_CryptoFinanceDashboardProject.Models.NasdaqData
+@{
+    ViewData["Title"] = "NASDAQ Hisse Arama";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="flex justify-center p-8">
+    <div class="w-full max-w-4xl space-y-6">
+        <form method="get" asp-controller="Nasdaq" asp-action="Index" class="flex gap-3">
+            <input type="text" name="symbol" value="" placeholder="Hisse sembolü girin (MSFT, AAPL…)"
+                   class="w-full px-4 py-2 rounded-xl border border-gray-300 focus:ring-2 focus:ring-blue-400 focus:outline-none" />
+            <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-xl hover:bg-blue-700">
+                Ara
+            </button>
+        </form>
+
+        @if (Model != null)
+        {
+            <div class="bg-white shadow-md rounded-xl p-6 space-y-4">
+                <h2 class="text-2xl font-bold">@Model.symbol - @Model.assetClass</h2>
+                <div class="grid grid-cols-2 gap-4">
+                    <div><strong>Borsa:</strong> @(Model.summaryData.Exchange?.value)</div>
+                    <div><strong>Sektör:</strong> @(Model.summaryData.Sector?.value)</div>
+                    <div><strong>Endüstri:</strong> @(Model.summaryData.Industry?.value)</div>
+                    <div><strong>1 Yıllık Hedef:</strong> @(Model.summaryData.OneYrTarget?.value)</div>
+                    <div><strong>Önceki Kapanış:</strong> @(Model.summaryData.PreviousClose?.value)</div>
+                    <div><strong>52 Hafta Yüksek/Düşük:</strong> @(Model.summaryData.FiftTwoWeekHighLow?.value)</div>
+                    <div><strong>Piyasa Değeri:</strong> @(Model.summaryData.MarketCap?.value)</div>
+                    <div><strong>Yıllık Temettü:</strong> @(Model.summaryData.AnnualizedDividend?.value)</div>
+                    <div><strong>Getiri:</strong> @(Model.summaryData.Yield?.value)</div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="text-center text-gray-500">Hisse verisi bulunamadı</div>
+        }
+    </div>
+</div>

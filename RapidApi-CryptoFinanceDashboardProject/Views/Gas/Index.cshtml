@@ -1,0 +1,59 @@
+﻿@using X.PagedList
+@model IPagedList<RapidApi_CryptoFinanceDashboardProject.Models.Result>
+@{
+    ViewData["Title"] = "Avrupa Akaryakıt Fiyatları";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="flex min-h-screen items-start justify-center p-8">
+    <div class="w-full max-w-7xl space-y-8">
+        <div class="flex items-center justify-between">
+            <h2 class="text-2xl font-bold text-slate-900">Ülke Bazlı Akaryakıt Fiyatları</h2>
+            <span class="text-sm text-slate-500">
+                Güncel LPG / Benzin / Dizel Fiyatları
+            </span>
+        </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+                @foreach (var item in Model)
+                {
+                    <div class="rounded-3xl bg-white p-6 shadow-soft border border-slate-100 hover:shadow-lg hover:border-primary/30 transition-all">
+
+                        <div class="text-center mb-4">
+                            <h3 class="text-lg font-bold text-slate-900 uppercase">@item.country</h3>
+                            <p class="text-sm text-slate-500">@item.currency cinsinden fiyatlar</p>
+                        </div>
+
+                        <div class="space-y-3">
+
+                            <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="font-semibold text-slate-700">Benzin</span>
+                                <span class="font-bold text-primary">@item.gasoline</span>
+                            </div>
+
+                            <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="font-semibold text-slate-700">Dizel</span>
+                                <span class="font-bold text-primary">@item.diesel</span>
+                            </div>
+
+                            <div class="flex justify-between bg-slate-50 p-3 rounded-xl border border-slate-100">
+                                <span class="font-semibold text-slate-700">LPG</span>
+                                <span class="font-bold text-primary">@item.lpg</span>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            <div class="flex items-center justify-between border-t border-slate-100 px-8 py-5 bg-slate-50/50">
+                <div class="flex gap-3">
+                    <a href="@Url.Action("Index", new { page = Model.PageNumber - 1 })" class="px-3 py-1 border rounded @(Model.HasPreviousPage ? "bg-white text-black" : "bg-gray-200 text-gray-500 pointer-events-none")">
+                        Önceki
+                    </a>
+                    <a href="@Url.Action("Index", new { page = Model.PageNumber + 1 })" class="px-3 py-1 border rounded @(Model.HasNextPage ? "bg-white text-black" : "bg-gray-200 text-gray-500 pointer-events-none")">
+                        Sonraki
+                    </a>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
