@@ -23,7 +23,7 @@ namespace RapidApi_CryptoFinanceDashboardProject.Controllers
                 RequestUri = new Uri("https://crypto-news51.p.rapidapi.com/api/v1/crypto/articles?page=1&limit=10&time_frame=24h&format=json"),
                 Headers =
     {
-        { "x-rapidapi-key", "e71177d867mshfa37763bf5e2e10p1b4212jsn34b1dc08d068" },
+       { "x-rapidapi-key", "cdb47aa04cmsh29c897da07c93f7p193945jsn7a061eae88f6" },
         { "x-rapidapi-host", "crypto-news51.p.rapidapi.com" },
     },
             };

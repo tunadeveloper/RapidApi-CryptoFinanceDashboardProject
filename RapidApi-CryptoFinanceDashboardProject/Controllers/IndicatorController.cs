@@ -23,7 +23,7 @@ namespace RapidApi_CryptoFinanceDashboardProject.Controllers
                 RequestUri = new Uri($"https://crypto-technical-analysis-indicator-apis-for-trading.p.rapidapi.com/rsi?length=14&timeframe={time}m&symbol={symbol}"),
                 Headers =
     {
-        { "x-rapidapi-key", "e71177d867mshfa37763bf5e2e10p1b4212jsn34b1dc08d068" },
+       { "x-rapidapi-key", "cdb47aa04cmsh29c897da07c93f7p193945jsn7a061eae88f6" },
         { "x-rapidapi-host", "crypto-technical-analysis-indicator-apis-for-trading.p.rapidapi.com" },
     },
             };
