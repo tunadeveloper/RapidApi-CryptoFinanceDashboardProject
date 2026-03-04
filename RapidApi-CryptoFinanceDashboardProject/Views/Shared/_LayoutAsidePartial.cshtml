@@ -10,24 +10,34 @@
             <span class="material-symbols-outlined group-hover:text-secondary">dashboard</span>
             <span class="text-sm font-medium">Dashboard</span>
         </a>
+
         <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "CryptoArticle" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "CryptoArticle")">
-            <span class="material-symbols-outlined group-hover:text-secondary">newspaper</span>
+            <span class="material-symbols-outlined group-hover:text-secondary">currency_bitcoin</span>
             <span class="text-sm font-medium">Kripto Haberler</span>
         </a>
+
+        <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "FinanceNews" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "FinanceNews")">
+            <span class="material-symbols-outlined group-hover:text-secondary">newspaper</span>
+            <span class="text-sm font-medium">Finansal Haberler</span>
+        </a>
+
         <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "ListingsDelistings" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "ListingsDelistings")">
-            <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
+            <span class="material-symbols-outlined group-hover:text-secondary">playlist_add_check</span>
             <span class="text-sm font-medium">Liste Giriş / Çıkışlar</span>
         </a>
+
         <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "Indicator" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "Indicator")">
-            <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
+            <span class="material-symbols-outlined group-hover:text-secondary">show_chart</span>
             <span class="text-sm font-medium">RSI İndikatör</span>
         </a>
+
         <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "Currency" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "Currency")">
-            <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
+            <span class="material-symbols-outlined group-hover:text-secondary">attach_money</span>
             <span class="text-sm font-medium">Döviz Kurları</span>
         </a>
+
         <a class="group flex items-center gap-3 rounded-xl px-4 py-3 text-text-muted hover:bg-slate-50 hover:text-slate-900 transition-all @(ViewContext.RouteData.Values["controller"]?.ToString() == "Gas" ? "bg-primary/5 text-primary font-semibold" : "")" href="@Url.Action("Index", "Gas")">
-            <span class="material-symbols-outlined group-hover:text-secondary">list_alt</span>
+            <span class="material-symbols-outlined group-hover:text-secondary">local_gas_station</span>
             <span class="text-sm font-medium">Akaryakıt</span>
         </a>
     </nav>
@@ -35,8 +45,8 @@
         <div class="flex items-center gap-3 rounded-2xl bg-slate-50 p-3 border border-slate-100">
             <div class="h-10 w-10 overflow-hidden rounded-full border-2 border-white shadow-sm" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAkvBLVLOCfzzsgT8YIYnMSZpFqEIMsza365dJg0ds49wQ49wZJljOkIQyHZnVpxeG7rbkvPg5yJ0kolCPQNni7IhYkHcRxGfw_RkFTTv8zAube4KeyJFmPe_qpQ67Q4WzKiFv7N4s7fnWughsxK5AKX3v4GRGCbaTeX-NzO4MmmSbysNGmkap2q7XJpYz4IR3b3XqqTst4TDubKcHtTMDh94zcqe8X403FlPysisF3HnFk8cPyepy7MQXum9gCAuz_oVPnKZ1ocAg'); background-size: cover; background-position: center;"></div>
             <div class="flex flex-col overflow-hidden">
-                <span class="truncate text-sm font-bold text-slate-900">Alex Morgan</span>
-                <span class="truncate text-xs font-medium text-primary">Pro Plan</span>
+                <span class="truncate text-sm font-bold text-slate-900">Tunahan Cengiz</span>
+                <span class="truncate text-xs font-medium text-primary">ASP.NET Core</span>
             </div>
         </div>
     </div>

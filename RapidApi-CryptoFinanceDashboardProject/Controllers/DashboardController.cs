@@ -13,10 +13,10 @@ namespace RapidApi_CryptoFinanceDashboardProject.Controllers
             _httpClientFactory = httpClientFactory;
         }
 
-        public async Task<IActionResult> Index(int? page)
+        public async Task<IActionResult> Index(int page = 1)
         {
             int pageSize = 10;
-            int pageNumber = page ?? 1;
+            int pageNumber = page;
 
             var client = _httpClientFactory.CreateClient();
             var request = new HttpRequestMessage
